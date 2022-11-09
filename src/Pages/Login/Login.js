@@ -2,8 +2,20 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import imgl from "../../assets/images/log/istockphoto-1392441826-612x612.jpg";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from "@firebase/auth";
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, providerLogin } = useContext(AuthContext);
+
+  const googleProvider = new GoogleAuthProvider();
+  const handleGoogle = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
   const handleLogIn = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -14,6 +26,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        form.reset();
       })
       .catch((err) => console.error(err));
   };
@@ -64,6 +77,14 @@ const Login = () => {
                 type="submit"
                 value="Login"
               />
+            </div>
+            <div className="btn-group btn-group-vertical mt-5  lg:btn-group-horizontal">
+              <button
+                onClick={handleGoogle}
+                className="btn btn-active mx-auto "
+              >
+                <FaGoogle></FaGoogle>.. Google Sign In
+              </button>
             </div>
           </form>
           <p className="text-center p-5 text-lg">
