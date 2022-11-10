@@ -4,14 +4,7 @@ import { FaUserCircle } from "react-icons/fa";
 
 const ReviewShow = ({ order, handleDelete }) => {
   const { user } = useContext(AuthContext);
-  const { _id, serviceName, price, customer, phone } = order;
-  //   const [orderService, setOrderService] = useState({});
-
-  //   useEffect(() => {
-  //     fetch(`http://localhost:5000/services/${service}`)
-  //       .then((res) => res.json())
-  //       .then((data) => setOrderService(data));
-  //   }, [service]);
+  const { _id, serviceName, price, customer, phone, message } = order;
 
   return (
     <tr>
@@ -48,7 +41,7 @@ const ReviewShow = ({ order, handleDelete }) => {
       </td>
       <td>Purple</td>
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+        <button className="btn btn-ghost btn-xs">{message}</button>
       </th>
     </tr>
   );

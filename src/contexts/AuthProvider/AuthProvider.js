@@ -3,8 +3,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  signInWithPopup,
   signOut,
+  signInWithPopup,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
