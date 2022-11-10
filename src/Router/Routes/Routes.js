@@ -22,13 +22,13 @@ const router = createBrowserRouter([
       {
         path: "/details",
         element: <Details></Details>,
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () => fetch("https://y-theta-lyart.vercel.app/services"),
       },
       {
         path: "/addservice/:id",
         element: <AddService></AddService>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://y-theta-lyart.vercel.app/services/${params.id}`),
       },
       {
         path: "/reviews",

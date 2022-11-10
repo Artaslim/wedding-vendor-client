@@ -7,7 +7,7 @@ const Reviews = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders?email=${user?.email}`, {})
+    fetch(`https://y-theta-lyart.vercel.app/orders?email=${user?.email}`, {})
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [user?.email]);
@@ -15,7 +15,7 @@ const Reviews = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are want to cancel your reviews");
     if (proceed) {
-      fetch(`http://localhost:5000/orders/${id}`, {
+      fetch(`https://y-theta-lyart.vercel.app/orders/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
