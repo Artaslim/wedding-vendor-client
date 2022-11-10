@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../../../assets/logo_dark.svg";
+import { AuthContext } from "../../../../../contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user, logout } = useContext(AuthContext);
+
+  const handleSign = () => {
+    logout()
+      .then(() => {})
+      .catch((err) => console.error(err));
+  };
+
   const menuItems = (
     <>
       <li className="font-semibold">
@@ -12,7 +21,20 @@ const Header = () => {
         <Link to="/details">Services</Link>
       </li>
       <li className="font-semibold">
-        <Link to="/login">Login</Link>
+        <Link to="/reviews">Review</Link>
+      </li>
+      <li className="font-semibold">
+        <Link to="/blog">Blog</Link>
+      </li>
+
+      <li className="font-semibold bg-sky-50">
+        {user?.email ? (
+          <button className="btn btn-info" onClick={handleSign}>
+            Log Out
+          </button>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </li>
     </>
   );
